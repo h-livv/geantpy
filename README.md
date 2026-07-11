@@ -2,27 +2,27 @@
 
 ### A Python framework for generating and analyzing Geant4 particle simulation datasets.
 
-GeantPy simplifies Geant4 workflows for researchers interested in particle collision data, machine learning, and scientific analysis. It automates simulation configuration and execution, producing structured datasets that integrate naturally with the Python scientific ecosystem.
-
-Rather than exposing the full Geant4 C++ API, GeantPy focuses on reproducible simulation workflows and efficient data generation.
+GeantPy makes Geant4-based particle simulation more accessible by automating simulation workflows and generating structured ROOT datasets, enabling researchers to quickly generate, inspect, and analyze particle interaction data without extensive C++ development.
 
 > **Note:** GeantPy is an independent project and is not affiliated with or endorsed by the Geant4 Collaboration.
 
 ---
 
-## Goal
+## Features
 
-The goal of GeantPy is to make Geant4-based particle simulation accessible without requiring extensive C++ development, enabling researchers to quickly generate, inspect, and analyze particle interaction datasets.
+- Easily configurable YAML interface
+- Event-level and track-level ROOT dataset generation
+- Utilities to convert dataset to NumPy arrays
 
 ---
 
-## Generated Files
-
+## Output Structure
 Each simulation produces a dedicated output directory containing:
 
 ```
 run_<timestamp>/
 ├── config.json
+├── particle_summary.txt
 ├── simulation.root
 └── validation.root
 ```
@@ -30,6 +30,10 @@ run_<timestamp>/
 ### `config.json`
 
 Stores the complete simulation configuration used for the run, ensuring experiments are fully reproducible.
+
+### `particle_summary.txt`
+
+A text file containing an overview of the particles generated.
 
 ### `simulation.root`
 
@@ -91,9 +95,42 @@ The generated `.npz` files can be loaded directly with NumPy and integrated with
 
 ---
 
+## Workflow
+
+```
+YAML Configuration
+        │
+        ▼
+     GeantPy
+        │
+        ▼
+      Geant4
+        │
+        ▼
+    config.json
+ particle_summary.txt
+  simulation.root
+  validation.root
+        │
+        ▼
+ NumPy / ML / Analysis
+```
+
+---
+
 ## Getting Started
 
 See the **[Usage Guide](docs/usage_guide.md)** for installation instructions, simulation setup, and example workflows.
+
+> **Note:** Current support is focused on beam-on-target (particle-target collision) simulations.
+
+---
+
+## Future Work
+
+- Generalized detector and geometry definitions
+- Python-native experiment configuration
+- Extended Geant4 bindings
 
 ---
 
