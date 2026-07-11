@@ -195,7 +195,7 @@ pip install -r requirements.txt
 Run the python interface:
 
 ```bash
-python run.py
+python run/run.py
 ```
 
 ---
@@ -225,7 +225,7 @@ For the Python data pipeline, install:
 pip install uproot awkward
 ```
 
-To use the data pipeline, set `interactive: false` in config.yaml
+To use the data pipeline, set `interactive: false` in run/config.yaml
 
 ---
 

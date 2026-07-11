@@ -98,7 +98,7 @@ class Simulation:
     def load_config(self, filepath=None):
         """Loads parameters from a YAML file and overrides defaults."""
         if filepath is None:
-            filepath = PROJECT_ROOT / "config.yaml"
+            filepath = PROJECT_ROOT / "run" / "config.yaml"
         try:
             with open(filepath, "r") as f:
                 config = yaml.safe_load(f)
