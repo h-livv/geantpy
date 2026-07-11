@@ -2,114 +2,98 @@
 
 ### A Python framework for generating and analyzing Geant4 particle simulation datasets.
 
-GeantPy is a high-level Python interface designed to simplify Geant4 workflows for data analysis, machine learning, and scientific computing. It provides a declarative interface for configuring particle collision simulations, automates Geant4 execution, and returns simulation outputs in Python-friendly formats.
+GeantPy simplifies Geant4 workflows for researchers interested in particle collision data, machine learning, and scientific analysis. It automates simulation configuration and execution, producing structured datasets that integrate naturally with the Python scientific ecosystem.
 
-The goal is to make Geant4 accessible to researchers who want to generate and analyze particle interaction data without writing extensive C++.
+Rather than exposing the full Geant4 C++ API, GeantPy focuses on reproducible simulation workflows and efficient data generation.
 
 > **Note:** GeantPy is an independent project and is not affiliated with or endorsed by the Geant4 Collaboration.
 
 ---
 
-## Motivation
+## Goal
 
-Geant4 is one of the most powerful particle transport toolkits available, but developing new simulations typically requires significant C++ knowledge.
-
-GeantPy bridges this gap by allowing users to:
-
-- Configure simulations in Python or YAML
-- Execute Geant4 simulations automatically
-- Generate structured datasets for downstream analysis
-- Integrate directly with the Python scientific ecosystem
-
-This makes GeantPy particularly well suited for:
-
-- Machine learning dataset generation
-- High-energy physics analysis
-- Parameter sweeps
-- Simulation-driven optimization
-- Rapid prototyping of particle interaction experiments
+The goal of GeantPy is to make Geant4-based particle simulation accessible without requiring extensive C++ development, enabling researchers to quickly generate, inspect, and analyze particle interaction datasets.
 
 ---
 
-## Core Capabilities
+## Generated Files
 
-- Python-first workflow
-- YAML-based experiment configuration
-- Automatic Geant4 macro generation
-- Automated simulation execution
-- Structured particle collision data extraction
-- Configurable beam and target parameters
-- Multi-threaded simulation support
-- Batch experiment generation
-- Integration with NumPy, Pandas, and Matplotlib
+Each simulation produces a dedicated output directory containing:
 
----
-
-## Workflow
-
-```text
-  YAML Configuration
-           │
-           ▼
-        GeantPy
-           │
-           ▼
-   Geant4 Simulation
-           │
-           ▼
-Particle Collision Data (ROOT)
-           │
-           ▼
-Python / Pandas / NumPy / ML
+```
+run_<timestamp>/
+├── config.json
+├── simulation.root
+└── validation.root
 ```
 
-## Generated Data
+### `config.json`
 
-Each simulation produces structured ROOT datasets suitable for scientific analysis.
+Stores the complete simulation configuration used for the run, ensuring experiments are fully reproducible.
 
-### validation.root
+### `simulation.root`
 
-Event-level collision information
+Track-level particle transport data.
 
-- Beam properties
+Contains information such as:
+
+- Event IDs
+- Track IDs
+- PDG particle codes
+- Particle positions
+- Particle momentum
+
+Each entry corresponds to an individual particle track generated during the simulation.
+
+### `validation.root`
+
+Event-level collision data.
+
+Contains information such as:
+
+- Incident beam properties
 - Target information
-- Outgoing particle lists
-- Event multiplicities
+- Outgoing particle IDs
+- Outgoing particle energies
+- Outgoing particle momenta
+- Particle multiplicities
 
-### simulation.root
-
-Track-level particle transport data
-
-- Particle identities
-- Momentum
-- Vertex positions
-- Event and track identifiers
+Each entry corresponds to a single collision event.
 
 ---
 
-## Use Cases
+## Data Analysis
 
-- Generate particle collision datasets
-- Train machine learning models on Monte Carlo simulations
-- Study particle production and transport
-- Perform large-scale parameter sweeps
-- Analyze detector and target performance
-- Build reproducible simulation pipelines
+GeantPy includes `data.py` for quickly inspecting ROOT files.
+
+It provides a summary of the objects stored in each dataset, including:
+
+- Branch names
+- Data types
+- Array shapes
+- Jagged array structures
+
+This provides a convenient overview of the generated simulation data before downstream analysis.
 
 ---
 
-## Getting started
+## ROOT → NumPy Conversion
 
-- Refer to the [Usage Guide](docs/usage_guide.md) to get started with data generation.
+The `convert.py` utility converts ROOT datasets into compressed NumPy (`.npz`) files for machine learning and scientific computing workflows.
 
-## Roadmap
+The generated `.npz` files can be loaded directly with NumPy and integrated with libraries such as:
 
-- [ ] Generic geometry definition
-- [ ] Python-native experiment builder
-- [ ] Custom detector support
-- [ ] Direct geometry construction
-- [ ] Improved visualization utilities
-- [ ] Native Geant4 bindings for selected components
+- NumPy
+- PyTorch
+- TensorFlow
+- JAX
+- Scikit-learn
+
+---
+
+## Getting Started
+
+See the **[Usage Guide](docs/usage_guide.md)** for installation instructions, simulation setup, and example workflows.
 
 ---
 
