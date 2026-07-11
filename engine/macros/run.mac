@@ -1,0 +1,30 @@
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+/process/verbose 0
+/material/verbose 0
+/run/particle/verbose 0
+/geantpy/det/setWorldMaterial G4_Galactic
+/geantpy/det/setChamberMaterial G4_AIR
+/geantpy/det/setChamberWidth 40.0 cm
+/geantpy/det/setChamberLength 120.0 cm
+/geantpy/det/setTargetShape Cylinder
+/geantpy/det/setTargetMaterial G4_Ir
+/geantpy/det/setTargetWidth 3.0 mm
+/geantpy/det/setTargetLength 55 mm
+/geantpy/det/setTargetPosition 0 0 -27.5 cm
+/geantpy/output/setFilter 0
+/geantpy/output/setLightFilter 0
+/run/numberOfThreads 12
+/run/initialize
+/geantpy/tracking/saveSecondaries true
+/geantpy/tracking/recordMode Hit
+/gun/particle proton
+/gun/beam/profile Gaussian
+/gun/beam/sigma 0.5 mm
+/gun/beam/direction 0 0 1
+/gun/beam/offset 0 0 0 cm
+/gun/beam/energyDist Mono
+/gun/beam/energyMean 26 GeV
+/run/beamOn 1000

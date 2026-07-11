@@ -1,0 +1,7 @@
+.venv/
+
+data/runs/
+
+engine/build/
+
+temp/
