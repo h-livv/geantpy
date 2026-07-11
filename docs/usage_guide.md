@@ -237,7 +237,11 @@ To view the summary of the latest run:
 python data/data.py
 ```
 
-Uproot tools can be used to convert ROOT data to a preferred format.
+To convert ROOT data to numpy arrays:
+
+```bash
+python data/convert.py
+```
 
 ---
 
