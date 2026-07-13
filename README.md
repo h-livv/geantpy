@@ -1,6 +1,6 @@
 # GeantPy
 
-### A Python framework for generating and analyzing Geant4 particle simulation datasets.
+### GeantPy is a Python framework for building, executing, and analyzing Geant4 simulations.
 
 GeantPy makes Geant4-based particle simulation more accessible by automating simulation workflows and generating structured ROOT datasets, enabling researchers to quickly generate, inspect, and analyze particle interaction data without extensive C++ development.
 
