@@ -121,3 +121,6 @@ GeantPy builds upon the Geant4 simulation toolkit developed by the Geant4 Collab
 [Geant4 - A Simulation Toolkit](https://www.sciencedirect.com/science/article/abs/pii/S0168900203013688), S. Agostinelli et al., Nucl. Instrum. Meth. A 506 (2003) 250-303
 
 This project is an independent Python framework and is not an official Geant4 project.
+
+## Status (as of 2026-09-06)
+Archived. Python interface for automating and orchestrating Geant4 simulation workflows through macro generation.
